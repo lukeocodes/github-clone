@@ -24,12 +24,18 @@ function download (repo, dest, opts, fn) {
   }
   opts = opts || {}
   var clone = opts.clone || false
+  delete opts.clone
 
   repo = normalize(repo)
   var url = repo.url || getUrl(repo, clone)
 
   if (clone) {
-    gitclone(url, dest, { checkout: repo.checkout, shallow: repo.checkout === 'master' }, function (err) {
+    var options = {
+      checkout: repo.checkout, 
+      shallow: repo.checkout === 'master',
+      ...opts 
+    }
+    gitclone(url, dest, options, function (err) {
       if (err === undefined) {
         rm(dest + '/.git')
         fn()
@@ -38,7 +44,17 @@ function download (repo, dest, opts, fn) {
       }
     })
   } else {
-    downloadUrl(url, dest, { extract: true, strip: 1, mode: '666', headers: { accept: 'application/zip' } })
+    var options = {
+      extract: true, 
+      strip: 1, 
+      mode: '666', 
+      ...opts,
+      headers: {
+        accept: 'application/zip',
+        ...(opts.headers || {})
+      }
+    }
+    downloadUrl(url, dest, options)
       .then(function (data) {
         fn()
       })
@@ -78,12 +94,13 @@ function normalize (repo) {
     var checkout = match[5] || 'master'
 
     if (origin == null) {
-      if (type === 'github')
+      if (type === 'github') {
         origin = 'github.com'
-      else if (type === 'gitlab')
+      } else if (type === 'gitlab') {
         origin = 'gitlab.com'
-      else if (type === 'bitbucket')
-        origin = 'bitbucket.com'
+      } else if (type === 'bitbucket') {
+        origin = 'bitbucket.org'
+      }
     }
 
     return {
@@ -105,10 +122,11 @@ function normalize (repo) {
 
 function addProtocol (origin, clone) {
   if (!/^(f|ht)tps?:\/\//i.test(origin)) {
-    if (clone)
+    if (clone) {
       origin = 'git@' + origin
-    else
+    } else {
       origin = 'https://' + origin
+    }
   }
 
   return origin
@@ -126,21 +144,23 @@ function getUrl (repo, clone) {
 
   // Get origin with protocol and add trailing slash or colon (for ssh)
   var origin = addProtocol(repo.origin, clone)
-  if (/^git\@/i.test(origin))
+  if (/^git\@/i.test(origin)) {
     origin = origin + ':'
-  else
+  } else {
     origin = origin + '/'
+  }
 
   // Build url
   if (clone) {
     url = origin + repo.owner + '/' + repo.name + '.git'
   } else {
-    if (repo.type === 'github')
+    if (repo.type === 'github') {
       url = origin + repo.owner + '/' + repo.name + '/archive/' + repo.checkout + '.zip'
-    else if (repo.type === 'gitlab')
+    } else if (repo.type === 'gitlab') {
       url = origin + repo.owner + '/' + repo.name + '/repository/archive.zip?ref=' + repo.checkout
-    else if (repo.type === 'bitbucket')
+    } else if (repo.type === 'bitbucket') {
       url = origin + repo.owner + '/' + repo.name + '/get/' + repo.checkout + '.zip'
+    }
   }
 
   return url

@@ -16,7 +16,9 @@ describe('download-git-repo', function () {
 
   var runStyle = function (type, style) {
     var clone = false
-    if (style === 'clones') clone = true
+    if (style === 'clones') {
+      clone = true
+    }
 
     it(style + ' master branch by default', function (done) {
       download(type + ':flipxfx/download-git-repo-fixture', 'test/tmp', { clone: clone }, function (err) {
@@ -67,7 +69,6 @@ describe('download-git-repo', function () {
         done()
       })
     })
-
   }
 
   var runType = function (type) {
@@ -128,6 +129,15 @@ describe('download-git-repo', function () {
       })
     })
 
+    it('downloads master branch file filter', function (done) {
+      download('direct:https://gitlab.com/flipxfx/download-git-repo-fixture/repository/archive.zip', 'test/tmp', { filter: file => file.path.slice(-3) === '.md' }, function (err) {
+        var actual = read('test/tmp', filter)
+        var expected = read('test/fixtures/gitlab/master-only-md')
+        assert.deepEqual(actual, expected)
+        done()
+      })
+    })
+
     it('downloads a branch', function (done) {
       download('direct:https://gitlab.com/flipxfx/download-git-repo-fixture/repository/archive.zip?ref=my-branch', 'test/tmp', function (err) {
         var actual = read('test/tmp', filter)
@@ -148,6 +158,15 @@ describe('download-git-repo', function () {
 
     it('clones a branch', function (done) {
       download('direct:https://gitlab.com/flipxfx/download-git-repo-fixture.git#my-branch', 'test/tmp', { clone: true }, function (err) {
+        var actual = read('test/tmp', filter)
+        var expected = read('test/fixtures/gitlab/my-branch')
+        assert.deepEqual(actual, expected)
+        done()
+      })
+    })
+
+    it('clones a branch because options', function (done) {
+      download('direct:https://gitlab.com/flipxfx/download-git-repo-fixture.git', 'test/tmp', { clone: true, checkout: 'my-branch', shallow: false }, function (err) {
         var actual = read('test/tmp', filter)
         var expected = read('test/fixtures/gitlab/my-branch')
         assert.deepEqual(actual, expected)

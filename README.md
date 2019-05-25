@@ -39,6 +39,9 @@ The file path to download the repository to.
 An optional options object parameter with download options. Options include:
 
 - `clone` - boolean default `false` - If true use `git clone` instead of an http download. While this can be a bit slower, it does allow private repositories to be used if the appropriate SSH keys are setup.
+- All other options (`proxy`, `headers`, `filter`, etc.) will be passed down accordingly and may override defaults
+    - Additional download options: https://github.com/kevva/download#options
+    - Additional clone options: https://github.com/jaz303/git-clone#clonerepo-targetpath-options-cb
 
 #### callback
 The callback function as `function (err)`.
@@ -59,9 +62,9 @@ download('bitbucket:flipxfx/download-git-repo-fixture#my-branch', 'test/tmp', { 
 })
 ```
 
-Using http download from GitLab repository with custom origin.
+Using http download from GitLab repository with custom origin and token.
 ```javascript
-download('gitlab:mygitlab.com:flipxfx/download-git-repo-fixture#my-branch', 'test/tmp', function (err) {
+download('gitlab:mygitlab.com:flipxfx/download-git-repo-fixture#my-branch', 'test/tmp', { 'PRIVATE-TOKEN': '1234' } function (err) {
   console.log(err ? 'Error' : 'Success')
 })
 ```

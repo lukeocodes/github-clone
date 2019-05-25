@@ -1,6 +1,6 @@
 {
   "name": "download-git-repo",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "MIT",
   "repository": "git://github.com/flipxfx/download-git-repo",
   "description": "Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.",
@@ -15,13 +15,13 @@
     "tarball"
   ],
   "dependencies": {
-    "download": "^5.0.3",
+    "download": "^7.1.0",
     "git-clone": "^0.1.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.3"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
-    "fs-readdir-recursive": "1.0.0"
+    "fs-readdir-recursive": "^1.1.0",
+    "mocha": "^6.1.4"
   },
   "scripts": {
     "test": "mocha"
