@@ -4,6 +4,7 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+  - git clone git@gitlab.com:flippidippi/download-git-repo-fixture.git
 
 test:
   stage: test
