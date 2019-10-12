@@ -1,11 +1,12 @@
 before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - 'which ssh-agent || (apt-get update -y && apt-get install openssh-client -y)'
   - eval $(ssh-agent -s)
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+  - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
   - ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
-  - git clone git@gitlab.com:flippidippi/download-git-repo-fixture.git
+  - ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts
 
 test:
   stage: test
