@@ -14,6 +14,12 @@ describe('download-git-repo', function () {
     return x[0] !== '.' || x === '.git'
   }
 
+  var topLevelDomain = {
+    github: '.com',
+    gitlab: '.com',
+    bitbucket: '.org'
+  }
+
   var runStyle = function (type, style) {
     var clone = false
     if (style === 'clones') {
@@ -51,7 +57,7 @@ describe('download-git-repo', function () {
     })
 
     it(style + ' master branch with specific origin', function (done) {
-      download(type + ':' + type + '.com:flippidippi/download-git-repo-fixture', 'test/tmp', { clone: clone }, function (err) {
+      download(type + ':' + type + topLevelDomain[type] + ':flippidippi/download-git-repo-fixture', 'test/tmp', { clone: clone }, function (err) {
         if (err) return done(err)
         var actual = read('test/tmp', filter)
         var expected = read('test/fixtures/' + type + '/master')
@@ -61,7 +67,7 @@ describe('download-git-repo', function () {
     })
 
     it(style + ' master branch with specific origin and protocol', function (done) {
-      download(type + ':https://' + type + '.com:flippidippi/download-git-repo-fixture', 'test/tmp', { clone: clone }, function (err) {
+      download(type + ':https://' + type + topLevelDomain[type] + ':flippidippi/download-git-repo-fixture', 'test/tmp', { clone: clone }, function (err) {
         if (err) return done(err)
         var actual = read('test/tmp', filter)
         var expected = read('test/fixtures/' + type + '/master')
@@ -77,7 +83,7 @@ describe('download-git-repo', function () {
     runStyle(type, 'clones')
 
     it('clones master branch with specific origin without type', function (done) {
-      download(type + '.com:flippidippi/download-git-repo-fixture', 'test/tmp', { clone: true }, function (err) {
+      download(type + topLevelDomain[type] + ':flippidippi/download-git-repo-fixture', 'test/tmp', { clone: true }, function (err) {
         if (err) return done(err)
         var actual = read('test/tmp', filter)
         var expected = read('test/fixtures/' + type + '/master')
@@ -87,7 +93,7 @@ describe('download-git-repo', function () {
     })
 
     it('clones master branch with specific origin and protocol without type', function (done) {
-      download('https://' + type + '.com:flippidippi/download-git-repo-fixture', 'test/tmp', { clone: true }, function (err) {
+      download('https://' + type + topLevelDomain[type] + ':flippidippi/download-git-repo-fixture', 'test/tmp', { clone: true }, function (err) {
         if (err) return done(err)
         var actual = read('test/tmp', filter)
         var expected = read('test/fixtures/' + type + '/master')
