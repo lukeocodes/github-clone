@@ -50,5 +50,9 @@
     "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
     "Phillip Lanclos (https://flippidippi.co)",
     "Andrei Khokhlov (http://hohlov.pro/)"
-  ]
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/lukeocodes"
+  }
 }
