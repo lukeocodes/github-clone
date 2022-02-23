@@ -34,6 +34,11 @@
     "standard": "^14.3.1",
     "semantic-release": "^19.0.2"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "standard": {
     "env": [
       "mocha"
