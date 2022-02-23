@@ -1,8 +1,8 @@
 {
-  "name": "go-and-git-a-repo",
+  "name": "@lukeocodes/git-a-repo",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "lukeocodes/go-and-git-a-repo",
+  "repository": "lukeocodes/git-a-repo",
   "description": "Download and extract a git repository (GitHub, GitLab, Bitbucket) in Node.",
   "keywords": [
     "download",

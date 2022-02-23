@@ -12,8 +12,8 @@ Would you like to contribute to this project?
 
 Would you like to contribute to this project? Check out our [contributing guide](./.github/CONTRIBUTING.md).
 
-<a href="https://github.com/lukeocodes/go-and-git-a-repo/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=lukeocodes/go-and-git-a-repo" />
+<a href="https://github.com/lukeocodes/git-a-repo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lukeocodes/git-a-repo" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
