@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.0
 executors:
-  my-custom-executor:
+  node:
     docker:
       - image: cimg/node:17.5.0
         auth:
@@ -11,18 +11,18 @@ executors:
           username: $DOCKER_HUB_USER
           password: $DOCKER_HUB_PASSWORD
 jobs:
-  my-job-name:
-    executor: my-custom-executor
+  setup-image:
+    executor: node
     steps:
       - checkout
-      - run: |
-          # echo Hello, World!
-  example-job:
-    executor: my-custom-executor
+  install-yarn:
+    executor: node
     steps:
       - node/install-yarn
 workflows:
   my-custom-workflow:
     jobs:
-      - my-job-name
-      - example-job
+      - setup-image
+      - install-yarn
+      - node/run:
+          yarn-run: test
