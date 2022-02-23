@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "repository": "lukeocodes/git-a-repo",
-  "description": "Download and extract a git repository (GitHub, GitLab, Bitbucket) in Node.",
+  "description": "Download or clone a git repository from Node",
   "keywords": [
     "download",
     "github",
