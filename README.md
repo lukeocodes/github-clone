@@ -1,6 +1,8 @@
 # Go and Git a repo
 
-Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.
+Download or clone a git repository from Node.
+
+[![Circle CI Status](https://img.shields.io/circleci/build/github/lukeocodes/git-a-repo)](https://app.circleci.com/pipelines/github/lukeocodes/git-a-repo?filter=all)
 
 ## Installation
 
