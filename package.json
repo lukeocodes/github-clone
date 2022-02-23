@@ -61,5 +61,8 @@
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/lukeocodes"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
