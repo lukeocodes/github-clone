@@ -2,7 +2,10 @@
   "name": "@lukeocodes/git-a-repo",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "lukeocodes/git-a-repo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukeocodes/git-a-repo.git"
+  },
   "description": "Download or clone a git repository from Node",
   "keywords": [
     "download",
@@ -33,5 +36,19 @@
     "env": [
       "mocha"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/lukeocodes/git-a-repo/issues"
+  },
+  "homepage": "https://github.com/lukeocodes/git-a-repo#readme",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
+  "contributors": [
+    "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
+    "Phillip Lanclos (https://flippidippi.co)",
+    "Andrei Khokhlov (http://hohlov.pro/)"
+  ]
 }
