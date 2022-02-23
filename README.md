@@ -1,10 +1,13 @@
-# download-git-repo
+# Go and Git a repo
 
 Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.
 
 ## Installation
 
-    $ npm install download-git-repo
+```sh
+$ npm install download-git-repo
+# yarn add download-git-repo
+```
 
 ## API
 
@@ -13,6 +16,7 @@ Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.
 Download a git `repository` to a `destination` folder with `options`, and `callback`.
 
 #### repository
+
 The shorthand repository string to download the repository from:
 
 - **GitHub** - `github:owner/name` or simply `owner/name`
@@ -33,36 +37,49 @@ If using `direct` without clone, you must pass the full url to the zip file, inc
 If using `direct` with clone, you must pass the full url to the git repo and you can specify a branch like `direct:url#my-branch`.
 
 #### destination
+
 The file path to download the repository to.
 
 #### options
+
 An optional options object parameter with download options. Options include:
 
 - `clone` - boolean default `false` - If true use `git clone` instead of an http download. While this can be a bit slower, it does allow private repositories to be used if the appropriate SSH keys are setup.
 - All other options (`proxy`, `headers`, `filter`, etc.) will be passed down accordingly and may override defaults
-    - Additional download options: https://github.com/kevva/download#options
-    - Additional clone options: https://github.com/jaz303/git-clone#clonerepo-targetpath-options-cb
+  - Additional download options: https://github.com/kevva/download#options
+  - Additional clone options: https://github.com/jaz303/git-clone#clonerepo-targetpath-options-cb
 
 #### callback
+
 The callback function as `function (err)`.
 
 ## Examples
+
 ### Shorthand
+
 Using http download from Github repository at master.
+
 ```javascript
-download('flippidippi/download-git-repo-fixture', 'test/tmp', function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download("flippidippi/download-git-repo-fixture", "test/tmp", function (err) {
+  console.log(err ? "Error" : "Success");
+});
 ```
 
 Using git clone from Bitbucket repository at my-branch.
+
 ```javascript
-download('bitbucket:flippidippi/download-git-repo-fixture#my-branch', 'test/tmp', { clone: true }, function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download(
+  "bitbucket:flippidippi/download-git-repo-fixture#my-branch",
+  "test/tmp",
+  { clone: true },
+  function (err) {
+    console.log(err ? "Error" : "Success");
+  }
+);
 ```
 
 Using http download from GitLab repository with custom origin and token.
+
 ```javascript
 download('gitlab:mygitlab.com:flippidippi/download-git-repo-fixture#my-branch', 'test/tmp', { headers: { 'PRIVATE-TOKEN': '1234' } } function (err) {
   console.log(err ? 'Error' : 'Success')
@@ -71,35 +88,58 @@ download('gitlab:mygitlab.com:flippidippi/download-git-repo-fixture#my-branch', 
 
 Using git clone from GitLab repository with custom origin and protocol.
 Note that the repository type (`github`, `gitlab` etc.) is not required if cloning from a custom origin.
+
 ```javascript
-download('https://mygitlab.com:flippidippi/download-git-repo-fixture#my-branch', 'test/tmp', { clone: true }, function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download(
+  "https://mygitlab.com:flippidippi/download-git-repo-fixture#my-branch",
+  "test/tmp",
+  { clone: true },
+  function (err) {
+    console.log(err ? "Error" : "Success");
+  }
+);
 ```
 
 ### Direct
+
 Using http download from direct url.
+
 ```javascript
-download('direct:https://gitlab.com/flippidippi/download-git-repo-fixture/repository/archive.zip', 'test/tmp', function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download(
+  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture/repository/archive.zip",
+  "test/tmp",
+  function (err) {
+    console.log(err ? "Error" : "Success");
+  }
+);
 ```
 
 Using git clone from direct url at master.
+
 ```javascript
-download('direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git', 'test/tmp', { clone: true }, function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download(
+  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git",
+  "test/tmp",
+  { clone: true },
+  function (err) {
+    console.log(err ? "Error" : "Success");
+  }
+);
 ```
 
 Using git clone from direct url at my-branch.
+
 ```javascript
-download('direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git#my-branch', 'test/tmp', { clone: true }, function (err) {
-  console.log(err ? 'Error' : 'Success')
-})
+download(
+  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git#my-branch",
+  "test/tmp",
+  { clone: true },
+  function (err) {
+    console.log(err ? "Error" : "Success");
+  }
+);
 ```
 
-## License
+## Credit
 
-MIT
-
+A continuation of the effectively abandoned[\*](https://gitlab.com/flippidippi/download-git-repo/-/issues/63) package [download-git-repo](https://www.npmjs.com/package/download-git-repo). Git history maintained for posterity. Questions taken as issues.
