@@ -26,7 +26,7 @@ describe("download-git-repo", function () {
       clone = true;
     }
 
-    it(style + " master branch by default", function (done) {
+    it(style + " default branch by default", function (done) {
       download(
         type + ":lukeocodes/download-git-repo-fixture",
         "test/tmp",
@@ -34,7 +34,7 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/" + type + "/master");
+          var expected = read("test/fixtures/" + type + "/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
@@ -73,7 +73,7 @@ describe("download-git-repo", function () {
       );
     });
 
-    it(style + " master branch with specific origin", function (done) {
+    it(style + " default branch with specific origin", function (done) {
       download(
         type +
           ":" +
@@ -85,7 +85,7 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/" + type + "/master");
+          var expected = read("test/fixtures/" + type + "/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
@@ -93,7 +93,7 @@ describe("download-git-repo", function () {
     });
 
     it(
-      style + " master branch with specific origin and protocol",
+      style + " default branch with specific origin and protocol",
       function (done) {
         download(
           type +
@@ -106,7 +106,7 @@ describe("download-git-repo", function () {
           function (err) {
             if (err) throw err;
             var actual = read("test/tmp", filter);
-            var expected = read("test/fixtures/" + type + "/master");
+            var expected = read("test/fixtures/" + type + "/main");
             assert.deepStrictEqual(actual, expected);
             done();
           }
@@ -120,7 +120,7 @@ describe("download-git-repo", function () {
 
     runStyle(type, "clones");
 
-    it("clones master branch with specific origin without type", function (done) {
+    it("clones default branch with specific origin without type", function (done) {
       download(
         type + topLevelDomain[type] + ":lukeocodes/download-git-repo-fixture",
         "test/tmp",
@@ -128,14 +128,14 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/" + type + "/master");
+          var expected = read("test/fixtures/" + type + "/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
       );
     });
 
-    it("clones master branch with specific origin and protocol without type", function (done) {
+    it("clones default branch with specific origin and protocol without type", function (done) {
       download(
         "https://" +
           type +
@@ -146,7 +146,7 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/" + type + "/master");
+          var expected = read("test/fixtures/" + type + "/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
@@ -164,7 +164,7 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/github/master");
+          var expected = read("test/fixtures/github/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
@@ -181,29 +181,29 @@ describe("download-git-repo", function () {
   });
 
   describe("via direct", function () {
-    it("downloads master branch", function (done) {
+    it("downloads default branch", function (done) {
       download(
-        "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture/-/archive/master/download-git-repo-fixture-master.zip",
+        "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture/-/archive/main/download-git-repo-fixture-main.zip",
         "test/tmp",
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/gitlab/master");
+          var expected = read("test/fixtures/gitlab/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }
       );
     });
 
-    it("downloads master branch file filter", function (done) {
+    it("downloads default branch file filter", function (done) {
       download(
-        "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture/-/archive/master/download-git-repo-fixture-master.zip",
+        "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture/-/archive/main/download-git-repo-fixture-main.zip",
         "test/tmp",
         { filter: (file) => file.path.slice(-3) === ".md" },
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/gitlab/master-only-md");
+          var expected = read("test/fixtures/gitlab/main-only-md");
           assert.deepStrictEqual(actual, expected);
           done();
         }
@@ -224,7 +224,7 @@ describe("download-git-repo", function () {
       );
     });
 
-    it("clones master branch", function (done) {
+    it("clones default branch", function (done) {
       download(
         "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture.git",
         "test/tmp",
@@ -232,7 +232,7 @@ describe("download-git-repo", function () {
         function (err) {
           if (err) throw err;
           var actual = read("test/tmp", filter);
-          var expected = read("test/fixtures/gitlab/master");
+          var expected = read("test/fixtures/gitlab/main");
           assert.deepStrictEqual(actual, expected);
           done();
         }

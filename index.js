@@ -32,7 +32,7 @@ function download(repo, dest, opts, fn) {
   if (clone) {
     var cloneOptions = {
       checkout: repo.checkout,
-      shallow: repo.checkout === "master",
+      shallow: repo.checkout === "main",
       ...opts,
     };
     gitclone(url, dest, cloneOptions, function (err) {
@@ -77,7 +77,7 @@ function normalize(repo) {
 
   if (match) {
     var url = match[2];
-    var directCheckout = match[3] || "master";
+    var directCheckout = match[3] || "main";
 
     return {
       type: "direct",
@@ -92,7 +92,7 @@ function normalize(repo) {
     var origin = match[2] || null;
     var owner = match[3];
     var name = match[4];
-    var checkout = match[5] || "master";
+    var checkout = match[5] || "main";
 
     if (origin == null) {
       if (type === "github") {
