@@ -60,7 +60,7 @@ The callback function as `function (err)`.
 Using http download from Github repository at master.
 
 ```javascript
-download("flippidippi/download-git-repo-fixture", "test/tmp", function (err) {
+download("lukeocodes/download-git-repo-fixture", "test/tmp", function (err) {
   console.log(err ? "Error" : "Success");
 });
 ```
@@ -69,7 +69,7 @@ Using git clone from Bitbucket repository at my-branch.
 
 ```javascript
 download(
-  "bitbucket:flippidippi/download-git-repo-fixture#my-branch",
+  "bitbucket:lukeocodes/download-git-repo-fixture#my-branch",
   "test/tmp",
   { clone: true },
   function (err) {
@@ -81,7 +81,7 @@ download(
 Using http download from GitLab repository with custom origin and token.
 
 ```javascript
-download('gitlab:mygitlab.com:flippidippi/download-git-repo-fixture#my-branch', 'test/tmp', { headers: { 'PRIVATE-TOKEN': '1234' } } function (err) {
+download('gitlab:mygitlab.com:lukeocodes/download-git-repo-fixture#my-branch', 'test/tmp', { headers: { 'PRIVATE-TOKEN': '1234' } } function (err) {
   console.log(err ? 'Error' : 'Success')
 })
 ```
@@ -91,7 +91,7 @@ Note that the repository type (`github`, `gitlab` etc.) is not required if cloni
 
 ```javascript
 download(
-  "https://mygitlab.com:flippidippi/download-git-repo-fixture#my-branch",
+  "https://mygitlab.com:lukeocodes/download-git-repo-fixture#my-branch",
   "test/tmp",
   { clone: true },
   function (err) {
@@ -106,7 +106,7 @@ Using http download from direct url.
 
 ```javascript
 download(
-  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture/repository/archive.zip",
+  "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture/repository/archive.zip",
   "test/tmp",
   function (err) {
     console.log(err ? "Error" : "Success");
@@ -118,7 +118,7 @@ Using git clone from direct url at master.
 
 ```javascript
 download(
-  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git",
+  "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture.git",
   "test/tmp",
   { clone: true },
   function (err) {
@@ -131,7 +131,7 @@ Using git clone from direct url at my-branch.
 
 ```javascript
 download(
-  "direct:https://gitlab.com/flippidippi/download-git-repo-fixture.git#my-branch",
+  "direct:https://gitlab.com/lukeocodes/download-git-repo-fixture.git#my-branch",
   "test/tmp",
   { clone: true },
   function (err) {
@@ -143,3 +143,13 @@ download(
 ## Credit
 
 A continuation of the effectively abandoned[\*](https://gitlab.com/flippidippi/download-git-repo/-/issues/63) package [download-git-repo](https://www.npmjs.com/package/download-git-repo). Git history maintained for posterity. Questions taken as issues.
+
+# Contributors
+
+Would you like to contribute to this project? Check out our [contributing guide](./.github/CONTRIBUTING.md).
+
+<a href="https://github.com/lukeocodes/go-and-git-a-repo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lukeocodes/go-and-git-a-repo" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
