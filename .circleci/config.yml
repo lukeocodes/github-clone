@@ -4,7 +4,7 @@ orbs:
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/base:node
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/lukeocodes/go-and-git-a-repo/environment-variables
@@ -18,9 +18,7 @@ jobs:
       - run: |
           # echo Hello, World!
   example-job:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
+    executor: my-custom-executor
     steps:
       - node/install-yarn
 workflows:
