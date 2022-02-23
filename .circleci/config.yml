@@ -1,10 +1,9 @@
 version: 2.1
 orbs:
   node: circleci/node@4.7.0
-  heroku: circleci/heroku@1.2.6
 
 jobs:
-  build_and_test:
+  test:
     docker:
       - image: cimg/node:17.2.0
     steps:
@@ -18,13 +17,13 @@ jobs:
 workflows:
   on_commit:
     jobs:
-      - build_and_test
+      - test
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
       # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
       # Read more: https://circleci.com/docs/2.0/env-vars/
       # - deploy:
       #     requires:
-      #       - build_and_test # only deploy if the build_and_test job has completed
+      #       - test # only deploy if the test job has completed
       #     filters:
       #       branches:
       #         only: master # only deploy when on main/master
@@ -35,15 +34,15 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
-      - build_and_test
+      - test
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
       # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
       # Read more: https://circleci.com/docs/2.0/env-vars/
       # - deploy:
       #     requires:
-      #       - build_and_test # only deploy if the build_and_test job has completed
+      #       - test # only deploy if the test job has completed
       #     filters:
       #       branches:
       #         only: master # only deploy when on main/master
