@@ -1,26 +1,16 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.0
-jobs:
-  build:
+executors:
+  my-custom-executor:
     docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
+      - image: cimg/node:lts
+jobs:
+  setup:
+    executor: my-custom-executor
     steps:
-      - node/install-yarn
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - checkout
+      - run: |
+          # echo Hello, World!
 workflows:
-  test:
+  my-custom-workflow:
     jobs:
-      - build
+      - my-job-name
