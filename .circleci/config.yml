@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  node: circleci/node@5.0.0
 executors:
   my-custom-executor:
     docker:
@@ -15,7 +17,14 @@ jobs:
       - checkout
       - run: |
           # echo Hello, World!
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - node/install-yarn
 workflows:
   my-custom-workflow:
     jobs:
       - my-job-name
+      - example-job
