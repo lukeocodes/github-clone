@@ -13,36 +13,21 @@ jobs:
       - run:
           command: yarn test
           name: Run tests
+      # - run:
+      #     name: release
+      #     command: npm run semantic-release || true
 
 workflows:
   on_commit:
     jobs:
       - test
-      # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
-      # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
-      # Read more: https://circleci.com/docs/2.0/env-vars/
-      # - deploy:
-      #     requires:
-      #       - test # only deploy if the test job has completed
-      #     filters:
-      #       branches:
-      #         only: master # only deploy when on main/master
   nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * *"       
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
                 - main
     jobs:
       - test
-      # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
-      # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
-      # Read more: https://circleci.com/docs/2.0/env-vars/
-      # - deploy:
-      #     requires:
-      #       - test # only deploy if the test job has completed
-      #     filters:
-      #       branches:
-      #         only: master # only deploy when on main/master

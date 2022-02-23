@@ -1,10 +1,10 @@
 {
   "name": "@lukeocodes/git-a-repo",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukeocodes/git-a-repo.git"
+    "url": "https://github.com/lukeocodes/git-a-repo.git"
   },
   "description": "Download or clone a git repository from Node",
   "keywords": [
@@ -19,7 +19,8 @@
     "tarball"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "download": "^8.0.0",
@@ -30,7 +31,8 @@
     "fs-readdir-recursive": "^1.1.0",
     "husky": "^3.0.8",
     "mocha": "^9.2.1",
-    "standard": "^14.3.1"
+    "standard": "^14.3.1",
+    "semantic-release": "^19.0.2"
   },
   "standard": {
     "env": [
