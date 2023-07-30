@@ -1,5 +1,7 @@
 interface CloneRepoOptions {
   repo: string;
-  dest: string;
+  dest?: string;
   fork?: boolean;
 }
+
+export type { CloneRepoOptions };
