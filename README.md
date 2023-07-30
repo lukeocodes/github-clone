@@ -2,7 +2,8 @@
 
 Clone a GitHub repository from Node.
 
-[![Circle CI Status](https://img.shields.io/circleci/build/github/lukeocodes/git-a-repo)](https://app.circleci.com/pipelines/github/lukeocodes/git-a-repo?filter=all)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/lukeocodes/github-clone/CI.yml?event=push)
+![Coveralls branch](https://img.shields.io/coverallsCoverage/github/lukeocodes/github-clone?branch=main)
 
 ## Installation
 
