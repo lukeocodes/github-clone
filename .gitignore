@@ -14,7 +14,5 @@ test/tmp
 Thumbs.db
 *tmp*
 
-package-lock.json
-
 .nyc_output
 coverage
