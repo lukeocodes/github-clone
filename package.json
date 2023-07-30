@@ -1,68 +1,73 @@
 {
-  "name": "git-a-repo",
-  "version": "0.0.0-development",
+  "name": "@lukeocodes/github-clone",
+  "version": "0.0.0-automated",
+  "description": "Clone a GitHub repository from Node",
   "license": "MIT",
+  "author": "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
+  "contributors": [
+    "Andrei Khokhlov (http://hohlov.pro/)",
+    "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
+    "Phillip Lanclos (https://flippidippi.co)"
+  ],
+  "homepage": "https://github.com/lukeocodes/github-clone#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukeocodes/git-a-repo.git"
-  },
-  "description": "Download or clone a git repository from Node",
-  "keywords": [
-    "download",
-    "github",
-    "gitlab",
-    "bitbucket",
-    "repo",
-    "repository",
-    "tar",
-    "extract",
-    "tarball"
-  ],
-  "scripts": {
-    "test": "mocha",
-    "semantic-release": "semantic-release"
-  },
-  "dependencies": {
-    "download": "^8.0.0",
-    "git-clone": "^0.2.0",
-    "rimraf": "^3.0.2"
-  },
-  "devDependencies": {
-    "fs-readdir-recursive": "^1.1.0",
-    "husky": "^3.0.8",
-    "mocha": "^9.2.1",
-    "standard": "^14.3.1",
-    "semantic-release": "^19.0.2"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
-  "standard": {
-    "env": [
-      "mocha"
-    ]
+    "url": "https://github.com/lukeocodes/github-clone.git"
   },
   "bugs": {
-    "url": "https://github.com/lukeocodes/git-a-repo/issues"
+    "url": "https://github.com/lukeocodes/github-clone/issues"
   },
-  "homepage": "https://github.com/lukeocodes/git-a-repo#readme",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "directories": {
     "test": "test"
   },
-  "author": "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
-  "contributors": [
-    "Luke Oliff <luke@lukeoliff.com> (https://lukeocodes.dev)",
-    "Phillip Lanclos (https://flippidippi.co)",
-    "Andrei Khokhlov (http://hohlov.pro/)"
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "semantic-release": "semantic-release",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\""
+  },
+  "sideEffects": false,
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "git-clone": "^0.2.0",
+    "rimraf": "^5.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@types/git-clone": "^0.2.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.3.1",
+    "husky": "^3.0.8",
+    "mocha": "^9.2.1",
+    "pretty-quick": "^3.1.3",
+    "semantic-release": "^19.0.2",
+    "semantic-release-plugin-update-version-in-files": "^1.1.0",
+    "shx": "^0.3.4",
+    "standard": "^14.3.1",
+    "typescript": "^5.1.3"
+  },
+  "keywords": [
+    "clone",
+    "github",
+    "repo",
+    "repository"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/lukeocodes"
   },
-  "publishConfig": {
-    "access": "public"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

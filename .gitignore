@@ -13,3 +13,5 @@ test/tmp
 *zip
 Thumbs.db
 *tmp*
+
+package-lock.json
