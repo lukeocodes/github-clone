@@ -36,7 +36,8 @@
   "dependencies": {
     "git-clone": "^0.2.0",
     "git-url-parse": "^13.1.0",
-    "rimraf": "^5.0.1"
+    "rimraf": "^5.0.1",
+    "url-exists-nodejs": "^0.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
