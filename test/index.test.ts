@@ -17,16 +17,21 @@ describe("testing the clone repo functionality", () => {
       })
     ).to.not.throw;
 
-    rimraf("./test/dump"); // clean up
+    rimraf("./test/dump/clone"); // clean up
   });
 
   it("it should not throw an error when forking and cloning a repo", async () => {
+    const forkName = `test-repo-${(Math.random() + 1).toString(36).substring(7)}`;
+
     expect(
       await cloneRepo({
         repo: "git@github.com:zpqrtbnk/test-repo.git",
         dest: "./test/dump/fork",
         clean: true,
         fork: true,
+        forkOptions: {
+          name: forkName,
+        },
       })
     ).to.not.throw;
 
@@ -36,9 +41,9 @@ describe("testing the clone repo functionality", () => {
 
     await octokit.rest.repos.delete({
       owner: "lukeocodes", // user the test token is from
-      repo: "test-repo",
+      repo: forkName, // the name we forked to
     });
 
-    rimraf("./test/dump"); // clean up
+    rimraf("./test/dump/fork"); // clean up
   });
 });

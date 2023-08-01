@@ -5,6 +5,9 @@ interface CloneRepoOptions extends Options {
   dest?: string;
   fork?: boolean;
   clean?: boolean;
+  forkOptions?: {
+    name?: string;
+  };
 }
 
 export type { CloneRepoOptions };

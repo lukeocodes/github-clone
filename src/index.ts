@@ -18,7 +18,7 @@ Access Token.`
       );
     }
 
-    url = await forkGitHubRepo(url);
+    url = await forkGitHubRepo(url, opts.forkOptions);
   }
 
   const { clean } = opts;
