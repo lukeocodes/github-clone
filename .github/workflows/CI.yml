@@ -39,7 +39,7 @@ jobs:
       - name: Run tests
         run: |
           npm clean-install
-          npm run test:coverage
+          GITHUB_PAT=${{secrets.PAT}} npm run test:coverage
       - name: Upload coverage results to Coveralls
         uses: coverallsapp/github-action@master
         with:
