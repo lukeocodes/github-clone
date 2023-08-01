@@ -17,3 +17,4 @@ Thumbs.db
 .nyc_output
 coverage
 dist
+test/dump

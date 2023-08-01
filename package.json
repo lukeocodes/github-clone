@@ -28,12 +28,13 @@
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
     "semantic-release": "semantic-release",
-    "test": "mocha -r ts-node/register test/*test.ts test/**/*test.ts --insect",
+    "test": "mocha -r ts-node/register test/*test.ts test/**/*test.ts --insect --timeout 5000",
     "test:coverage": "nyc --reporter=lcovonly --reporter=text --reporter=text-summary npm run test"
   },
   "sideEffects": false,
   "types": "dist/index.d.ts",
   "dependencies": {
+    "@octokit/rest": "^20.0.1",
     "git-clone": "^0.2.0",
     "git-url-parse": "^13.1.0",
     "rimraf": "^5.0.1",

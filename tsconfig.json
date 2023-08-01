@@ -5,10 +5,11 @@
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "target": "es2019",
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": true
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*"]
